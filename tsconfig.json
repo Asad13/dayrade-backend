@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.build.json",
+  "ts-node": {
+    "transpileOnly": true,
+    "require": ["typescript-transform-paths/register"]
+  },
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "typeRoots": ["./node_modules/@types", "index.d.ts", "./types"], // new
+  "include": [
+    "src/**/*",
+    "index.d.ts",
+    "./types",
+    "jest.config.ts",
+    "__tests__/**/*"
+  ], // Added "./types"
+  "exclude": ["node_modules", "dist", "coverage"]
+}

@@ -1,0 +1,10 @@
+!.*
+node_modules
+dist
+coverage
+logs
+**/*.log
+.husky
+.vscode
+**/*.js
+yarn.lock.yaml
