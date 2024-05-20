@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { User } from './entities';
+import { User, Account, Trade, TradeSummary } from './entities';
 
 const PORT =
   process.env.DATABASE_PORT !== undefined &&
@@ -17,7 +17,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE_NAME,
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [User, Account, Trade, TradeSummary],
   migrations: [],
   subscribers: [],
 });

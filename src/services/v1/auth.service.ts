@@ -1,14 +1,31 @@
 import { AppDataSource } from '@src/databases/postgres/data-source';
-import { User } from '@src/databases/postgres/entities';
+import { User, Account } from '@src/databases/postgres/entities';
 import logger from '@src/utils/logger';
 
 export const createUser = async (userData: any): Promise<User | null> => {
   try {
+    const accountRepository = AppDataSource.getRepository(Account);
     const userRepository = AppDataSource.getRepository(User);
 
-    const user = await userRepository.save(userData);
+    if (userData?.email === 'demo@gmail.com') {
+      const newAccount = new Account();
+      newAccount.id = 'CWSIMDEVRAO';
+      await accountRepository.save(newAccount);
 
-    return user;
+      const newUser = new User();
+      newUser.email = userData.email;
+      newUser.user_name = userData.user_name;
+      newUser.password = userData.password;
+      newUser.country = userData.country;
+      newUser.account = newAccount;
+
+      const user = await userRepository.save(newUser);
+      return user;
+    } else {
+      const user = await userRepository.save(userData);
+
+      return user;
+    }
   } catch (error) {
     logger.error(
       `[POSTGRES ERROR]: unable to insert new user. error: ${error as string}`,

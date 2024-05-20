@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import responseTime from '@middlewares/v1/response-time';
 import responseHeaders from '@middlewares/v1/response-headers';
 import v1AuthRouter from '@src/routes/v1/auth';
+import v1TradeRouter from '@src/routes/v1/trade';
 import swaggerDoc from '@utils/swagger';
 import swaggerUi from 'swagger-ui-express';
 import { getSessionOptions } from '@src/utils/session-options';
@@ -34,6 +35,7 @@ export const createApp = (): Application => {
 
   /* routes */
   app.use('/api/v1/auth', v1AuthRouter); // Authentication Route
+  app.use('/api/v1/trade', v1TradeRouter); // Trade Route
 
   /* Swagger Routes */
   app.use(
@@ -65,9 +67,12 @@ export const createApp = (): Application => {
   );
 
   /* Root Endpoint */
-  app.use('/api', (req: Request, res: Response) => {
-    console.log(req.headers.origin); // will be removed
-    res.status(200).json({ status: true, message: 'API is working...' });
+  app.use('/api', (req: Request, res: Response, next: NextFunction): void => {
+    try {
+      res.status(200).json({ status: true, message: 'API is working...' });
+    } catch (error: any) {
+      next(error);
+    }
   });
 
   /* Custom 404 Middleware */

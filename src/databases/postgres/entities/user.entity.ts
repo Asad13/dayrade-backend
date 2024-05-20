@@ -4,7 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
+import { Account } from './account.entity';
 import { CountryCode } from '@apptypes/country.type';
 
 @Entity({ name: 'users' })
@@ -54,6 +57,13 @@ export class User {
     length: 500,
   })
   bio: string;
+
+  // @OneToMany(() => Account, (account) => account.user)
+  // accounts: Account[];
+
+  @OneToOne(() => Account, (account) => account.user, { nullable: true })
+  @JoinColumn()
+  account: Account;
 
   @CreateDateColumn({
     type: 'timestamptz',

@@ -8,6 +8,7 @@ import { setProcessEvents } from '@utils/process-events';
 import { autoDeleteLogFiles } from '@utils/delete-log-files';
 import config from '@configs/config';
 import logger from '@utils/logger';
+// import { getAndSaveTradingData } from '@utils/trade-data';
 import { createServer, type Server } from 'http';
 
 const connectWithResources = async (): Promise<void> => {
@@ -59,6 +60,7 @@ const init = async (): Promise<void> => {
   config.server = server;
   setProcessEvents(); // set process events
   autoDeleteLogFiles(); // Deleting Log files if the file sizes crosses 10mb
+  // await getAndSaveTradingData();
 };
 
 init()

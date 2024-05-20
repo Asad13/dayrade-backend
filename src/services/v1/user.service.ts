@@ -10,6 +10,9 @@ export const getUserById = async (id: string): Promise<User | null> => {
       where: {
         id,
       },
+      relations: {
+        account: true,
+      },
       select: {
         id: true,
         first_name: true,
@@ -17,6 +20,10 @@ export const getUserById = async (id: string): Promise<User | null> => {
         email: true,
         created_at: true,
         updated_at: true,
+        account: {
+          id: true,
+          balance: true,
+        },
       },
     });
 
