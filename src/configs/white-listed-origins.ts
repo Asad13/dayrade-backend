@@ -1,5 +1,6 @@
 const whiteListedOrigins = [
-  /^https:\/\/(?:[a-z]+\.)?example\.com$/,
+  /^https:\/\/dashboard.dayrade\.com$/,
+  /^https:\/\/(?:[a-z]+\.)?dayrade\.com$/,
   /^https?:\/\/localhost:\d{1,4}/,
 ];
 
