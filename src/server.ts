@@ -16,11 +16,9 @@ const connectWithResources = async (): Promise<void> => {
     await redisClient.connect();
     await AppDataSource.initialize();
     logger.info('[POSTGRES CONNECTION]: Connected to Postgres Database...');
-  } catch (error) {
+  } catch (error: any) {
     if (!AppDataSource.isInitialized) {
-      logger.error(
-        `[POSTGRES CONNECTION ERROR]: Unable to connect with Postgres Database...`,
-      );
+      logger.error(`[POSTGRES CONNECTION ERROR]: ${error as string}`);
     }
     logger.error(`[RESOURCE CONNECTION ERROR]: shuting down...`);
     process.exit(1);

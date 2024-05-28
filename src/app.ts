@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import responseTime from '@middlewares/v1/response-time';
 import responseHeaders from '@middlewares/v1/response-headers';
 import v1AuthRouter from '@src/routes/v1/auth';
+import v1UserRouter from '@src/routes/v1/user';
 import v1TradeRouter from '@src/routes/v1/trade';
 import swaggerDoc from '@utils/swagger';
 import swaggerUi from 'swagger-ui-express';
@@ -35,6 +36,7 @@ export const createApp = (): Application => {
 
   /* routes */
   app.use('/api/v1/auth', v1AuthRouter); // Authentication Route
+  app.use('/api/v1/user', v1UserRouter); // User Route
   app.use('/api/v1/trade', v1TradeRouter); // Trade Route
 
   /* Swagger Routes */
