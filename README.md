@@ -1,4 +1,4 @@
-# Demo API Server
+# Dayrade Backend
 
 ## Steps to run the application
 
@@ -10,11 +10,15 @@
   npm i -g yarn@1.22.21
   ```
 
-- Clone the Git repository. Run any of the following command on your terminal/powershell **[Not required if you are using the zip]**:
-  - **SSH:** `git clone git@github.com:Asad13/demo.git`
-  - **HTTPS:** `git clone https://github.com/Asad13/demo.git`
-- Convert the name of the file .env.example to .env (Not needed for zip version).
-- Download and install Redis. Use on of the following approach:
+- Clone the Git repository. Run any of the following command on your terminal/powershell:
+
+  ```bash
+  git clone https://asad_mujumder@bitbucket.org/zimtra/dayrade-backend.git
+  ```
+
+- Convert the name of the file .env.example to .env.
+- Dowanload and install Postgresql(version 15 or higher recommended) and create a database call **dayrade**.
+- Download and install Redis. Use one of the following approach:
 
   - **Local:** Follow the instructions [here](https://redis.io/docs/getting-started/installation/) on Redis's website according to your Operating System to install Redis on your local machine.
   - **Remote:** Add the **URL** of the remote Redis database as an environmet variable in the .env file with name **REDIS_URL**.
